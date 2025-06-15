@@ -7,7 +7,7 @@ const AdminSidebar = () => {
 
   const handleLogout = () => {
     localStorage.clear();
-    navigate('/login');
+    navigate('/');
   };
 
   return (
@@ -41,16 +41,6 @@ const AdminSidebar = () => {
               }
             >
               <FaUsers className="me-2" /> Manage Users
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink
-              to="/dashboard/admin/reports"
-              className={({ isActive }) =>
-                `nav-link d-flex align-items-center ${isActive ? 'active text-white bg-dark' : 'text-white bg-dark'}`
-              }
-            >
-              Reports
             </NavLink>
           </li>
         </ul>

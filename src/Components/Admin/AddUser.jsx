@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AdminSidebar from './AdminSidebar';
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const AddUser = () => {
@@ -13,7 +14,7 @@ const AddUser = () => {
 
   const [responseMessage, setResponseMessage] = useState('');
   const [messageType, setMessageType] = useState('');
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -37,7 +38,7 @@ const AddUser = () => {
       const result = await res.json();
 
       if (result.success) {
-   
+
         window.location.href = "/dashboard/admin/manage-users";
       } else {
         setResponseMessage(result.message);
@@ -133,7 +134,13 @@ const AddUser = () => {
                   </div>
 
                   <div className="d-flex justify-content-between">
-                    <button type="button" className="btn btn-secondary rounded-pill">← Discard</button>
+                    <button
+                      type="button"
+                      className="btn btn-secondary rounded-pill"
+                      onClick={() => navigate('/dashboard/admin/manage-users')}
+                    >
+                      ← Discard
+                    </button>
                     <button type="submit" className="btn btn-primary rounded-pill">+ Create New</button>
                   </div>
                 </form>
